@@ -18,7 +18,7 @@ jobs:
       - name: Build project for distribution
         run: |
           python -m build
-          tar -zcf publish.tar.gz dist
+          tar -zcf publish.tar.gz dist/*
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
