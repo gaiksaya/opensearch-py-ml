@@ -7,5 +7,5 @@ standardReleasePipelineWithGenericTrigger(
     tokenIdCredential: 'jenkins-opensearch-py-ml-generic-webhook-token',
     causeString: 'A tag was cut on opensearch-project/opensearch-js repository causing this workflow to run',
     downloadReleaseAsset: true) {
-        echo 'Download completed'
+        echo 'Download completed!!!'
     }
