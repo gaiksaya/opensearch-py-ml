@@ -6,7 +6,7 @@ lib = library(identifier: 'jenkins@support-assets', retriever: modernSCM([
 standardReleasePipelineWithGenericTrigger(
     tokenIdCredential: 'jenkins-opensearch-py-ml-generic-webhook-token',
     causeString: 'A tag was cut on opensearch-project/opensearch-js repository causing this workflow to run',
-    downloadReleaseAsset: true) {
+    downloadReleaseAsset: false) {
         sh 'cd dist && ls -l'
         echo "Vola!"
     }
