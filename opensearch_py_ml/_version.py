@@ -24,10 +24,10 @@
 #  under the License.
 
 # TODO fill out this information
-__title__ = "opensearch_py_ml"
+__title__ = "my_py_sayali"
 __description__ = "Python Client and Toolkit for DataFrames, Big Data, Machine Learning and ETL in OpenSearch"
-__url__ = "https://github.com/opensearch-project/opensearch-py-ml"
-__version__ = "2.2.0"
+__url__ = "https://github.com/gaiksaya/opensearch-py-ml"
+__version__ = "0.1.0"
 __author__ = "Dhrubo Saha"
 __author_email__ = "dhrubo@amazon.com"
 __maintainer__ = "Dhrubo Saha, Yaliang Wu"

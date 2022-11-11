@@ -5,8 +5,8 @@ lib = library(identifier: 'jenkins@support-assets-tar', retriever: modernSCM([
 
 standardReleasePipelineWithGenericTrigger(
     tokenIdCredential: 'jenkins-opensearch-py-ml-generic-webhook-token',
-    causeString: 'A tag was cut on opensearch-project/opensearch-js repository causing this workflow to run',
-    downloadReleaseAsset: true) {
-        sh 'cd dist && ls -l'
-        echo "Vola!"
+    causeString: 'A tag was cut on opensearch-project/opensearch-py-ml repository causing this workflow to run',
+    downloadReleaseAsset: true,
+    signArtifacts: false) {
+        publishToPyPi(repository: 'https://github.com/gaiksaya/opensearch-py-ml', tag: "$tag")
     }
