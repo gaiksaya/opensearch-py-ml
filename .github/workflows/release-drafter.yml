@@ -1,6 +1,9 @@
 name: Release drafter
 
-on: [workflow_dispatch]
+on:
+  push:
+    tags:
+      - "*"
 
 jobs:
   lint:
