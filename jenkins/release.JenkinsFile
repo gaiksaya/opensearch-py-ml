@@ -9,5 +9,5 @@ standardReleasePipelineWithGenericTrigger(
     causeString: 'A tag was cut on opensearch-project/opensearch-py-ml repository causing this workflow to run',
     downloadReleaseAsset: true,
     signArtifacts: false) {
-        publishToPyPi(repository: 'https://github.com/gaiksaya/opensearch-py-ml', tag: "$tag")
+        publishToPyPi()
     }
