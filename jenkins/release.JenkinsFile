@@ -1,6 +1,6 @@
-lib = library(identifier: 'jenkins@1.3.0', retriever: modernSCM([
+lib = library(identifier: 'jenkins@pypi-1', retriever: modernSCM([
     $class: 'GitSCMSource',
-    remote: 'https://github.com/opensearch-project/opensearch-build-libraries.git',
+    remote: 'https://github.com/gaiksaya/opensearch-build-libraries-1.git',
 ]))
 
 standardReleasePipelineWithGenericTrigger(
