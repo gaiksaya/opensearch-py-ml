@@ -1,0 +1,45 @@
+lib = library(identifier: 'jenkins@pypi-1', retriever: modernSCM([
+    $class: 'GitSCMSource',
+    remote: 'https://github.com/gaiksaya/opensearch-build-libraries-1.git',
+]))
+
+pipeline {
+    agent
+    {
+        docker {
+            label args.overrideAgent ?: 'Jenkins-Agent-AL2-X64-C54xlarge-Docker-Host'
+            image args.overrideDockerImage ?: 'opensearchstaging/ci-runner:release-centos7-clients-v1'
+            alwaysPull true
+        }
+    }
+    stages {
+        stage('Download artifacts') {
+            steps {
+                script {
+                        echo "Downloading artifacts from"
+                        sh "curl -J -L -H 'Accept: application/octet-stream' -H 'Authorization: Bearer ${GITHUB_TOKEN}' https://api.github.com/repos/gaiksaya/opensearch-py-ml/releases/83913846/assets | tar -xzv"
+                        sh "ls -l"
+                        sh "ls ${WORKSPACE}/dist/*"
+                        }
+                }
+            }
+        stage('Release') {
+            steps {
+                script {
+                    signArtifacts(
+                        artifactPath: "${WORKSPACE}/dist",
+                        sigtype: '.asc',
+                        platform: 'linux'
+                    )
+                }
+            }
+        }
+    }
+    post {
+        always {
+            script {
+                postCleanup()
+            }
+        }
+    }
+}
