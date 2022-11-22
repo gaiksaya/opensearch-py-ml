@@ -17,7 +17,7 @@ pipeline {
             steps {
                 script {
                         echo "Downloading artifacts from"
-                        sh "curl -J -L -H 'Accept: application/octet-stream' -H 'Authorization: Bearer ${GITHUB_TOKEN}' https://api.github.com/repos/gaiksaya/opensearch-py-ml/releases/83913846/assets | tar -xzv"
+                        sh "curl -J -L -H 'Accept: application/octet-stream' https://github.com/gaiksaya/opensearch-py-ml/releases/download/1.0.1/artifacts.tar.gz | tar -xzv"
                         sh "ls -l"
                         sh "ls ${WORKSPACE}/dist/*"
                         }
