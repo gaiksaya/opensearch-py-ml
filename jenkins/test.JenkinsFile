@@ -27,7 +27,7 @@ pipeline {
             steps {
                 script {
                     signArtifacts(
-                        artifactPath: "dist",
+                        artifactPath: "${WORKSPACE}/dist",
                         sigtype: '.asc',
                         platform: 'linux'
                     )
