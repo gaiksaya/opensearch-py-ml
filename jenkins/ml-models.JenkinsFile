@@ -30,7 +30,7 @@ pipeline {
     environment {
         ARTIFACT_PATH = "${BASE_DOWNLOAD_PATH}/${VERSION}/"
         UPLOAD_PATH = "models/ml-models"
-        // BUCKET_NAME = credentials('ml-model-bucket-name')
+        BUCKET_NAME = credentials('ml-model-bucket-name')
     }
     stages{
         stage('Parameters Check') {
@@ -46,14 +46,14 @@ pipeline {
         stage('Download the artifacts') {
             steps {
                 script {
-                    // downloadFromS3(
-                    //     assumedRoleName: 'gaiksaya-ml-models-role',
-                    //     roleAccountNumberCred: 'ml-model-account-number',
-                    //     downloadPath: "${ARTIFACT_PATH}",
-                    //     bucketName: "${BUCKET_NAME}",
-                    //     localPath: "${WORKSPACE}/.",
-                    //     force: true
-                    // )
+                    downloadFromS3(
+                        assumedRoleName: 'gaiksaya-ml-models-role',
+                        roleAccountNumberCred: 'ml-model-account-number',
+                        downloadPath: "${ARTIFACT_PATH}",
+                        bucketName: "${BUCKET_NAME}",
+                        localPath: "${WORKSPACE}/.",
+                        force: true
+                    )
                     sh('ls -l')
                 }
             }
