@@ -51,7 +51,7 @@ pipeline {
                         roleAccountNumberCred: 'ml-model-account-number',
                         downloadPath: "${ARTIFACT_PATH}",
                         bucketName: "${BUCKET_NAME}",
-                        localPath: "${WORKSPACE}",
+                        localPath: "${WORKSPACE}/artifacts",
                         force: true
                     )
                     sh('ls -l')
