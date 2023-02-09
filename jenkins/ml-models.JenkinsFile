@@ -48,7 +48,7 @@ pipeline {
                 script {
                     withCredentials([string(credentialsId: 'ml-model-account-number', variable: 'AWS_ACCOUNT_NUMBER')]) {
                         withAWS(role: 'gaiksaya-ml-models-role', roleAccount: "${AWS_ACCOUNT_NUMBER}", duration: 900, roleSessionName: 'jenkins-session', region:'us-west-2') {
-                            s3Download(file: "${WORKSPACE}/.", bucket: "${BUCKET_NAME}", path: "${ARTIFACT_PATH}", force: true)
+                            s3Download(file: "${WORKSPACE}/artifacts", bucket: "${BUCKET_NAME}", path: "${ARTIFACT_PATH}", force: true)
                             }
                             }
                     // downloadFromS3(
