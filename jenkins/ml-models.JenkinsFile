@@ -54,7 +54,7 @@ pipeline {
                         localPath: "${WORKSPACE}/.",
                         force: true
                     )
-                    sh "ls -l && ls -l ml-models"
+                    sh "ls -l"
                 }
             }
         }
