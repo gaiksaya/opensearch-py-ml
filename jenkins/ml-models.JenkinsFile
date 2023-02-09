@@ -55,6 +55,7 @@ pipeline {
                         force: true
                     )
                     sh('ls -l')
+                    sh('ls -l artifacts')
                 }
             }
         }
