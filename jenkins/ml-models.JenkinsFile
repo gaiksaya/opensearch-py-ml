@@ -30,7 +30,7 @@ pipeline {
     environment {
         ARTIFACT_PATH = "${BASE_DOWNLOAD_PATH}/${VERSION}/"
         UPLOAD_PATH = "models/ml-models"
-        BUCKET_NAME = credentials('ml-model-bucket-name')
+        // BUCKET_NAME = credentials('ml-model-bucket-name')
     }
     stages{
         stage('Parameters Check') {
