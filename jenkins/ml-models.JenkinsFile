@@ -54,7 +54,7 @@ pipeline {
                         localPath: "${WORKSPACE}/.",
                         force: true
                     )
-                    sh "ls -l ${WORKSPACE}"
+                    sh "ls -l"
                 }
             }
         }
