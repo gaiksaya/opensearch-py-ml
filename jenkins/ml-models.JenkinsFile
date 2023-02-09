@@ -63,7 +63,7 @@ pipeline {
                     publishToArtifactsProdBucket(
                         assumedRoleName: 'ml-model-upload-role',
                         source: "${WORKSPACE}/ml-models",
-                        destination: "${UPLOAD_PATH}",
+                        destination: "models/ml-models",
                         signingPlatform: 'linux',
                         sigType: '.sig',
                         sigOverwrite: true
