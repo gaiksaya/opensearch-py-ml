@@ -29,7 +29,7 @@ pipeline {
         }
     environment {
         ARTIFACT_PATH = "${BASE_DOWNLOAD_PATH}/${VERSION}/"
-        UPLOAD_PATH = "models/${ARTIFACT_PATH}"
+        UPLOAD_PATH = "models"
         BUCKET_NAME = credentials('ml-model-bucket-name')
     }
     stages{
