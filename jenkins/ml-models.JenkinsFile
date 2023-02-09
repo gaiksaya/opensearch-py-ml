@@ -54,6 +54,7 @@ pipeline {
                         localPath: "${UPLOAD_PATH}",
                         force: true
                     )
+                    sh "ls -l ${UPLOAD_PATH}"
                 }
             }
         }
