@@ -54,24 +54,23 @@ pipeline {
                         localPath: "${WORKSPACE}/.",
                         force: true
                     )
-                    sh "ls -l"
                 }
             }
         }
-        // stage('Sign and Release the artifacts') {
-        //     steps {
-        //         script {
-        //             publishToArtifactsProdBucket(
-        //                 assumedRoleName: 'ml-model-upload-role',
-        //                 source: "${UPLOAD_PATH}",
-        //                 destination: "${UPLOAD_PATH}",
-        //                 signingPlatform: 'linux',
-        //                 sigType: '.sig',
-        //                 sigOverwrite: true
-        //             )
-        //         }
-        //     }
-        // }
+        stage('Sign and Release the artifacts') {
+            steps {
+                script {
+                    publishToArtifactsProdBucket(
+                        assumedRoleName: 'ml-model-upload-role',
+                        source: "${WORKSPACE}/ml-models",
+                        destination: "${UPLOAD_PATH}",
+                        signingPlatform: 'linux',
+                        sigType: '.sig',
+                        sigOverwrite: true
+                    )
+                }
+            }
+        }
     }
     post {
         always {
