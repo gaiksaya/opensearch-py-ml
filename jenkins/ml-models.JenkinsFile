@@ -18,7 +18,7 @@ pipeline {
     parameters {
         string(
             name: 'BASE_DOWNLOAD_PATH',
-            description: 'Base path of S3 to download from eg:ml-models/huggingface/sentence-transformers/all-distilroberta-v1',
+            description: 'S3 base path to download artifacts from eg:ml-models/huggingface/sentence-transformers/all-distilroberta-v1. DO NOT include the trailing backlash at the end',
             trim: true
         )
         string(
@@ -39,6 +39,10 @@ pipeline {
                     if(BASE_DOWNLOAD_PATH.isEmpty() || VERSION.isEmpty()) {
                         currentBuild.result = 'ABORTED'
                         error('Parameters cannot be empty! Please provide the correct values.')
+                    }
+                    if(BASE_DOWNLOAD_PATH.endsWith('/')) {
+                        currentBuild.result = 'ABORTED'
+                        error('"/" not allowed at the end of the BASE_DOWNLOAD_PATH') 
                     }
                 }
             }
