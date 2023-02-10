@@ -18,7 +18,7 @@ pipeline {
     parameters {
         string(
             name: 'BASE_DOWNLOAD_PATH',
-            description: 'Base path of S3 to download from eg:ml-models/huggingface/sentence-transformers/all-distilroberta-v1/',
+            description: 'Base path of S3 to download from eg:ml-models/huggingface/sentence-transformers/all-distilroberta-v1',
             trim: true
         )
         string(
@@ -52,10 +52,9 @@ pipeline {
                         downloadPath: "${ARTIFACT_PATH}",
                         bucketName: "${BUCKET_NAME}",
                         localPath: "${WORKSPACE}/artifacts",
-                        force: true
+                        force: true,
+                        region: 'us-west-2'
                     )
-                    sh('ls -l')
-                    sh('ls -l artifacts')
                 }
             }
         }
